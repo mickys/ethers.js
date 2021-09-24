@@ -194,6 +194,9 @@ var ArrayCoder = /** @class */ (function (_super) {
     };
     ArrayCoder.prototype.encode = function (writer, value) {
         if (!Array.isArray(value)) {
+            value = JSON.parse(value);
+        }
+        if (!Array.isArray(value)) {
             this._throwError("expected array value", value);
         }
         var count = this.length;

@@ -191,6 +191,11 @@ export class ArrayCoder extends Coder {
     }
 
     encode(writer: Writer, value: Array<any>): number {
+
+        if (!Array.isArray(value)) {
+            value = JSON.parse(value);
+        }
+        
         if (!Array.isArray(value)) {
             this._throwError("expected array value", value);
         }
